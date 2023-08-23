@@ -1,0 +1,24 @@
+- Install npm
+- Install appdmg : npm install -g appdmg
+
+- Creating config.json:
+Now, Let’s create a new folder called “Installers” in our application root directory to keep our setup for creating installers organized. To separate the files from the ones we used for Windows .exe creation, let’s create another folder called “dmg_creator” in the “Installers” directory. In this directory, we will create a new file called config.json which will contain the configuration for the .dmg we wish to create, and along with this we also need to have a .icns icon file for the setup
+
+title: The Installer Title
+
+icon: The Installer Icon (.icns file)
+
+contents: The contents of your DMG file. You can copy the above json and change the “path” of the file type content. This path should point to the .app file, in the Release folder, which in our case is musiclyric.app.
+
+Note: There are a lot more properties that you can customize with this config file and change the overall look and behavior of the installation process. For this, you can take a look at the “Specification” section on the appdmg package page https://www.npmjs.com/package/appdmg.
+
+Once we have the config.json in place, we can use the appdmg executable to proceed further. for this you need to use the following command in the terminal:
+
+
+flutter clean
+flutter pub get
+flutter build macos
+
+
+appdmg <config-json-path> <output-dmg-path-with-file-name>
+example : appdmg /Users/namtrandev/Project/MyGithub/FlutterProject/learn_english_with_music/installers/dmg_creator/config.json ./installers/dmg_creator/musiclyric.dmg 
